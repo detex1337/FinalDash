@@ -32,7 +32,8 @@ public class FinaldashView extends SurfaceView implements Runnable
 	private volatile boolean jugando;
 	private boolean pausa = true;
 	private Canvas canvas;
-	private Paint paint, paintletras;
+	private Paint paint, paintLetras, fondoLetras;
+	private RectF rectFondo;
 	private Bitmap fondo;
 	private int velocidadFondo = 0;
 	private long fps;
@@ -68,7 +69,8 @@ public class FinaldashView extends SurfaceView implements Runnable
 		  
 		ourHolder = getHolder();
 		paint = new Paint();
-		paintletras = new Paint();
+		paintLetras = new Paint();
+		fondoLetras = new Paint();
 
 		vb = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
@@ -137,22 +139,22 @@ public class FinaldashView extends SurfaceView implements Runnable
 			draw();
 		  
 			Random rand = new Random();
-			int rocapos = rand.nextInt(screenX-100);
-			int nubepos = rand.nextInt(screenX-100);
-			int boostpos = rand.nextInt(screenX-100);
-			int rocavel = rand.nextInt(250);
-			int rocavel2 = rand.nextInt(250);
-			int nubevel = rand.nextInt(250);
-			int nubevel2 = rand.nextInt(250);
-			int nubevel3 = rand.nextInt(250);
-			int boostvel = rand.nextInt(250);
+			int rocaPos = rand.nextInt(screenX-100);
+			int nubePos = rand.nextInt(screenX-100);
+			int boostPos = rand.nextInt(screenX-100);
+			int rocaVel = rand.nextInt(250);
+			int rocaVel2 = rand.nextInt(250);
+			int nubeVel = rand.nextInt(250);
+			int nubeVel2 = rand.nextInt(250);
+			int nubeVel3 = rand.nextInt(250);
+			int boostVel = rand.nextInt(250);
 			
-			roca1.shoot(rocapos, -100, roca1.DOWN, rocavel+200);
-			roca2.shoot(rocapos, -100, roca2.DOWN, rocavel2+200);
-			nube1.shoot(nubepos, -100, nube1.DOWN, nubevel+300);
-			nube2.shoot(nubepos, -100, nube2.DOWN, nubevel2+300);
-			nube3.shoot(nubepos, -100, nube3.DOWN, nubevel3+300);
-			boost.shoot(boostpos, -100, nube1.DOWN, boostvel+150);
+			roca1.shoot(rocaPos, -100, roca1.DOWN, rocaVel+200);
+			roca2.shoot(rocaPos, -100, roca2.DOWN, rocaVel2+200);
+			nube1.shoot(nubePos, -100, nube1.DOWN, nubeVel+300);
+			nube2.shoot(nubePos, -100, nube2.DOWN, nubeVel2+300);
+			nube3.shoot(nubePos, -100, nube3.DOWN, nubeVel3+300);
+			boost.shoot(boostPos, -100, nube1.DOWN, boostVel+150);
 			
 			timeThisFrame = System.currentTimeMillis() - startFrameTime;
 			if (timeThisFrame >= 1) 
@@ -203,33 +205,34 @@ public class FinaldashView extends SurfaceView implements Runnable
 		if(roca1.getImpactPointY() > screenY+200)
 		{
 		    roca1.setInactive();
-		    puntuacion = puntuacion + 10;
+		    puntuacion = puntuacion + 1000;
 		} 
 		if(roca2.getImpactPointY() > screenY+200)
 		{
 		    roca2.setInactive();
-		    puntuacion = puntuacion + 10;
+		    puntuacion = puntuacion + 1000;
 		}  
 		if(nube1.getImpactPointY() > screenY+200)
 		{
 			nube1.setInactive();
-			puntuacion = puntuacion + 5;
+			puntuacion = puntuacion + 100;
 		} 
 		if(nube2.getImpactPointY() > screenY+200)
 		{
 			nube2.setInactive();
-			puntuacion = puntuacion + 5;
+			puntuacion = puntuacion + 100;
 		} 
 		if(nube3.getImpactPointY() > screenY+200)
 		{
 			nube3.setInactive();
-			puntuacion = puntuacion + 5;
+			puntuacion = puntuacion + 100;
 		} 
 		if(boost.getImpactPointY() > screenY+200)
 		{
 			boost.setInactive();
 		} 
-		
+
+		puntuacion++;
 		  
 		// AQUI SE COMPRUEBA QUE EL OBSTACULO CHOCA CONTRA EL JUGADOR
 		if(roca1.getStatus())
@@ -238,8 +241,9 @@ public class FinaldashView extends SurfaceView implements Runnable
         	{
         		roca1.setInactive();
         		soundPool.play(contraRoca, 1, 1, 0, 0, 1);
-        		vb.vibrate(1000);
+        		vb.vibrate(600);
                 vidas = vidas - 3;
+                puntuacion = 0;
                 if(vidas <= 0)
                 {
                 	db = new SQLiteManager(context);
@@ -258,6 +262,7 @@ public class FinaldashView extends SurfaceView implements Runnable
         		soundPool.play(contraRoca, 1, 1, 0, 0, 1);
         		vb.vibrate(1000);
         		vidas = vidas - 3;
+				puntuacion = 0;
                 if(vidas <= 0)
                 {
                 	db = new SQLiteManager(context);
@@ -353,6 +358,9 @@ public class FinaldashView extends SurfaceView implements Runnable
 			paint.setStyle(Paint.Style.STROKE);
 			paint.setStrokeWidth(1);
 
+			//Las siguientes lineas comentadas se pueden descomentar si quieres ver el area
+			//de colision de los objetos en la pantalla.
+
 			//canvas.drawRect(playerShip.getRect(), paint);
 			canvas.drawBitmap(playerShip.getBitmap(), playerShip.getX(), screenY-220, paint);
 			
@@ -392,9 +400,14 @@ public class FinaldashView extends SurfaceView implements Runnable
 				canvas.drawBitmap(boost.getBitmap(), boost.getX(), boost.getY(), paint);
 			}
 
-			paintletras.setColor(Color.argb(255, 0, 0, 0));
-			paintletras.setTextSize(40);
-			canvas.drawText("Puntuacion: " + puntuacion + "   Vidas: " + vidas, 10, 50, paintletras);
+			fondoLetras.setStyle(Paint.Style.FILL);
+			fondoLetras.setColor(Color.CYAN);
+			rectFondo = new RectF(10,15,480,55);
+			canvas.drawRoundRect(rectFondo, 5, 5, fondoLetras);
+
+			paintLetras.setColor(Color.argb(255, 0, 0, 0));
+			paintLetras.setTextSize(40);
+			canvas.drawText("Puntuacion: " + puntuacion + "   Vidas: " + vidas, 10, 50, paintLetras);
 
 			ourHolder.unlockCanvasAndPost(canvas);
 		}
