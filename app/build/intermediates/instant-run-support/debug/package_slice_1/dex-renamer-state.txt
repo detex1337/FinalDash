@@ -1,0 +1,4 @@
+#Thu Jan 18 14:05:14 CET 2018
+base.0=C\:\\Users\\rbustillo\\Documents\\workspace\\FinalDash\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+renamed.0=classes.dex
+file.0=C\:\\Users\\rbustillo\\Documents\\workspace\\FinalDash\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1\\classes.dex

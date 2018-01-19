@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FinalDash</string>
+    <string name="title1">Final</string>
+    <string name="title2">Dash</string>
+    <string name="btn_play">Play</string>
+    <string name="btn_scores">Scores</string>
+    <string name="btn_exit">Exit</string>
+    <string name="title_activity_play">PlayActivity</string>
+    <string name="title_activity_scores">ScoresActivity</string>
+    <string name="play_score">Distance</string>
+    <string name="play_speed">Speed</string>
+    <string name="play_time">Time</string>
+    <string name="txt_info"></string>
+    <string name="txt_puntuaciones">Puntuaciones</string>
+    <string name="title_activity_puntuacion">PuntuacionActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

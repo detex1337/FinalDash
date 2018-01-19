@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MenuActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondomenu"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.dtx.finaldash.MenuActivity" >
+
+    <TextView
+        android:id="@+id/tvTitulo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitulo1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/title2"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:shadowColor="@color/darkblue"
+    	android:shadowDx="2"
+    	android:shadowDy="2"
+    	android:shadowRadius="0.01"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/btn_scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_play"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/buttonshapeexit"
+        android:onClick="onClickScores"
+        android:text="@string/btn_scores"
+        android:textSize="26sp" />
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_scores"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/buttonshapescores"
+        android:onClick="onClickExit"
+        android:text="@string/btn_exit"
+        android:textSize="26sp" />
+
+    <Button
+        android:id="@+id/btn_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn_exit"
+        android:layout_below="@+id/tvTitulo2"
+        android:layout_marginTop="46dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="onClickPlay"
+        android:text="@string/btn_play"
+        android:textSize="26sp" />
+
+    <TextView
+        android:id="@+id/tvTitulo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:shadowColor="@color/darkblue"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="0.01"
+        android:text="@string/title1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp" />
+
+</RelativeLayout>
