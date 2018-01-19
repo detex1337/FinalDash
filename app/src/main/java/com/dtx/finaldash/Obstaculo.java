@@ -15,15 +15,15 @@ public class Obstaculo
 	public final int UP = 0;
 	public final int DOWN = 1;
 
-	int heading = -1;
-	float speed =  350;
+	private int heading = -1;
+	private float speed =  350;
 	 
 	private int width = 100;
 	private int height = 100;
 	 
 	private boolean isActive;
-		
-	public Obstaculo(Context context, int screenY, int tipo) 
+
+	public Obstaculo(Context context, int screenY, int tipo)
 	{
 		isActive = false;
 		rect = new RectF();
@@ -79,8 +79,8 @@ public class Obstaculo
 	        return  y;
 	    }
 	}
-	
-	public boolean shoot(float startX, float startY, int direction, int speed) 
+
+	public boolean shoot(float startX, float startY, int direction, int speed)
 	{
 	    if (!isActive) 
 	    {
@@ -93,7 +93,7 @@ public class Obstaculo
 	    }
 	    return false;
 	}
-	
+
 	public void update(long fps)
 	{ 
 	    if(heading == UP)

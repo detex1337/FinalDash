@@ -5,12 +5,9 @@ import java.io.Serializable;
 public class Puntuacion implements Serializable
 {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	int id, puntos;
-	
+	private int id, puntos;
+
 	public Puntuacion(int id, int puntos) {
 		super();
 		this.id = id;

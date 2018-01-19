@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 public class PuntuacionActivity extends Activity {
 
-	Typeface tipodeLetra; 
-	TextView puntos;
+	private Typeface tipodeLetra;
+	private TextView puntos;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

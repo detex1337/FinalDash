@@ -8,7 +8,7 @@ import android.graphics.RectF;
 public class RainbowdashPlayer 
 {
 
-	RectF rect;
+	private RectF rect;
 		 
 	private Bitmap bitmap;
 	 
@@ -19,7 +19,7 @@ public class RainbowdashPlayer
 	private float y;
 	 
 	private float shipSpeed;
-	 
+
 	public final int STOPPED = 0;
 	public final int LEFT = 1;
 	public final int RIGHT = 2;
@@ -27,7 +27,7 @@ public class RainbowdashPlayer
 	private int anchopantalla;
 
 	private int shipMoving = STOPPED;
-   
+
 	public RainbowdashPlayer(Context context, int screenX, int screenY)
 	{
 		rect = new RectF();
@@ -75,7 +75,7 @@ public class RainbowdashPlayer
 	{
 		shipMoving = state;
 	}
-    
+
 	public void update(long fps)
 	{
 		if(shipMoving == LEFT && x > anchopantalla-anchopantalla+15)

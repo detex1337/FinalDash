@@ -23,10 +23,10 @@ import android.view.SurfaceView;
 
 public class FinaldashView extends SurfaceView implements Runnable
 {
-	Context context;
-	SQLiteManager db;
-	Puntuacion puntos;
-	boolean gameOver = false;
+	private Context context;
+	private SQLiteManager db;
+	private Puntuacion puntos;
+	private boolean gameOver = false;
 	private Thread hiloJuego = null;
 	private SurfaceHolder ourHolder;
 	private volatile boolean jugando;
@@ -37,8 +37,8 @@ public class FinaldashView extends SurfaceView implements Runnable
 	private int velocidadFondo = 0;
 	private long fps;
 	private long timeThisFrame;
-	MediaPlayer cancionJuego;
-	int cancionJuegoMilis;
+	private MediaPlayer cancionJuego;
+	private int cancionJuegoMilis;
  
 	private int screenX;
 	private int screenY;
@@ -47,16 +47,19 @@ public class FinaldashView extends SurfaceView implements Runnable
 	private Obstaculo roca1, roca2;
 	private Obstaculo nube1, nube2, nube3;
 	private Obstaculo boost;
- 
-	int puntuacion = 0;
+	private int tipoRoca = 1;
+	private int tipoNube = 2;
+	private int tipoBoost = 3;
+
+	private int puntuacion = 0;
 	private int vidas = 3;
 	
 	private SoundPool soundPool;
     private int contraNube = -1;
     private int contraRoca = -1;
     private int contraBoost = -1;
-	
-	Vibrator vb;
+
+	private Vibrator vb;
 
 	public FinaldashView(Context context, int x, int y) 
 	{
@@ -66,10 +69,9 @@ public class FinaldashView extends SurfaceView implements Runnable
 		ourHolder = getHolder();
 		paint = new Paint();
 		paintletras = new Paint();
-		
-		
+
 		vb = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
+		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 		
 		try
 		{
@@ -88,7 +90,7 @@ public class FinaldashView extends SurfaceView implements Runnable
 		catch(IOException e)
 		{
 		    // Print an error message to the console
-		    Log.e("error", "fallo al cargar sonidos");
+		    Log.e("error", "Fallo al cargar sonidos.");
 		}
 		  
 		screenX = x;
@@ -108,12 +110,12 @@ public class FinaldashView extends SurfaceView implements Runnable
 
 		playerShip = new RainbowdashPlayer(context, screenX, screenY);
 
-		roca1 = new Obstaculo(context, screenY, 1);
-		roca2 = new Obstaculo(context, screenY, 1);
-		nube1 = new Obstaculo(context, screenY, 2);
-		nube2 = new Obstaculo(context, screenY, 2);
-		nube3 = new Obstaculo(context, screenY, 2);
-		boost = new Obstaculo(context, screenY, 3);
+		roca1 = new Obstaculo(context, screenY, tipoRoca);
+		roca2 = new Obstaculo(context, screenY, tipoRoca);
+		nube1 = new Obstaculo(context, screenY, tipoNube);
+		nube2 = new Obstaculo(context, screenY, tipoNube);
+		nube3 = new Obstaculo(context, screenY, tipoBoost);
+		boost = new Obstaculo(context, screenY, tipoBoost);
 		
 		cancionJuego = MediaPlayer.create(context, R.raw.playcts);
 		cancionJuego.setAudioStreamType(AudioManager.STREAM_MUSIC);

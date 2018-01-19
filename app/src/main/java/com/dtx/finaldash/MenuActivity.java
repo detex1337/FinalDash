@@ -13,16 +13,16 @@ import android.widget.TextView;
 
 public class MenuActivity extends Activity 
 {
-	MediaPlayer cancionMenu;
-	Typeface tipodeLetra; 
-	int cancionMilis;
-	
-	TextView titulo1;
-	TextView titulo2;
-	
-	Button play;
-	Button scores;
-	Button exit;
+	private MediaPlayer cancionMenu;
+	private Typeface tipodeLetra;
+	private int cancionMilis;
+
+	private TextView titulo1;
+	private TextView titulo2;
+
+	private Button play;
+	private Button scores;
+	private Button exit;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 

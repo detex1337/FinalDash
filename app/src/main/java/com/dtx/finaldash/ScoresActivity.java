@@ -12,13 +12,13 @@ import android.widget.TextView;
 
 public class ScoresActivity extends Activity 
 {
-	ArrayList<Puntuacion> arrPuntos = new ArrayList<Puntuacion>();
-	AdapterPuntos adaptador = null;
-	SQLiteManager db = null;
-	ListView lv = null;
-	Typeface tipodeLetra; 
-	TextView titulo1;
-	Button borrar;
+	private ArrayList<Puntuacion> arrPuntos = new ArrayList<Puntuacion>();
+	private AdapterPuntos adaptador = null;
+	private SQLiteManager db = null;
+	private ListView lv = null;
+	private Typeface tipodeLetra;
+	private TextView titulo1;
+	private Button borrar;
 	
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -42,8 +42,8 @@ public class ScoresActivity extends Activity
 		lv.setAdapter(adaptador);
 		
 	}
-	
-	public void borrarPuntuaciones(View v)
+
+	private void borrarPuntuaciones(View v)
 	{
 		db = new SQLiteManager(this);
 		db.borrarTodo();

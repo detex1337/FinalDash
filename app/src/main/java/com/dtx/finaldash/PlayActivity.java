@@ -28,10 +28,10 @@ public class PlayActivity extends Activity
 	// spaceInvadersView will be the view of the game
     // It will also hold the logic of the game
     // and respond to screen touches as well
-    FinaldashView juego;
-    Display display;
-    Point size;
-    ImageView dash;
+    private FinaldashView juego;
+    private Display display;
+    private Point size;
+    private ImageView dash;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
