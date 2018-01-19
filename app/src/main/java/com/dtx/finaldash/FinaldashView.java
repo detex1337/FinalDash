@@ -330,10 +330,10 @@ public class FinaldashView extends SurfaceView implements Runnable
         		boost.setInactive();
         		soundPool.play(contraBoost, 1, 1, 0, 0, 1);
         		puntuacion = puntuacion + 25;
-                if(vidas < 3)
-                {
+//                if(vidas < 3)
+//                {
                 	vidas ++;
-                }
+//                }
             }
         }
 	}
