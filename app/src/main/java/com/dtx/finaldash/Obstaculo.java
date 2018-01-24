@@ -18,29 +18,30 @@ public class Obstaculo
 	private int heading = -1;
 	private float speed =  350;
 	 
-	private int width = 100;
-	private int height = 100;
+	private int width;
+	private int height;
 	 
 	private boolean isActive;
 
-	public Obstaculo(Context context, int screenY, int tipo)
+	public Obstaculo(Context context, int screenX, int screenY, int tipo)
 	{
 		isActive = false;
 		rect = new RectF();
-		
+
+		height = screenY / 10;
 		switch (tipo) 
 		{
 		case 1:
 			bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.rock);
-			width = 100;
+			width = screenX / 8;
 			break;
 		case 2:
 			bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.nube);
-			width = 200;
+			width = screenX / 6;
 			break;
 		case 3:
 			bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.boost);
-			width = 70;
+			width = screenX / 3;
 			break;
 		default:
 			break;

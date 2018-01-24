@@ -112,12 +112,12 @@ public class FinaldashView extends SurfaceView implements Runnable
 
 		playerShip = new RainbowdashPlayer(context, screenX, screenY);
 
-		roca1 = new Obstaculo(context, screenY, tipoRoca);
-		roca2 = new Obstaculo(context, screenY, tipoRoca);
-		nube1 = new Obstaculo(context, screenY, tipoNube);
-		nube2 = new Obstaculo(context, screenY, tipoNube);
-		nube3 = new Obstaculo(context, screenY, tipoBoost);
-		boost = new Obstaculo(context, screenY, tipoBoost);
+		roca1 = new Obstaculo(context, screenX, screenY, tipoRoca);
+		roca2 = new Obstaculo(context, screenX, screenY, tipoRoca);
+		nube1 = new Obstaculo(context, screenX, screenY, tipoNube);
+		nube2 = new Obstaculo(context, screenX, screenY, tipoNube);
+		nube3 = new Obstaculo(context, screenX, screenY, tipoBoost);
+		boost = new Obstaculo(context, screenX, screenY, tipoBoost);
 		
 		cancionJuego = MediaPlayer.create(context, R.raw.playcts);
 		cancionJuego.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -361,8 +361,8 @@ public class FinaldashView extends SurfaceView implements Runnable
 			//Las siguientes lineas comentadas se pueden descomentar si quieres ver el area
 			//de colision de los objetos en la pantalla.
 
-			//canvas.drawRect(playerShip.getRect(), paint);
-			canvas.drawBitmap(playerShip.getBitmap(), playerShip.getX(), screenY-220, paint);
+			canvas.drawRect(playerShip.getRect(), paint);
+			canvas.drawBitmap(playerShip.getBitmap(), playerShip.getX(), playerShip.getY(), paint);
 			
 			if(roca1.getStatus())
 			{

@@ -32,12 +32,12 @@ public class RainbowdashPlayer
 	{
 		rect = new RectF();
 		anchopantalla = screenX;
-		
-		length = 100; //estaba a 10
-		height = 166;
-		 
-		x = screenX / 2 - 50; //estaba a 2
-		y = screenY - height; //estaba a 20
+
+		length = screenX / 5; //estaba a 10
+		height = screenY / 5;
+
+		x = screenX / 2 - length / 2; //estaba a 2
+		y = screenY / 2 - height / 2; //estaba a 20
 		 
 
 		bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.rdtop);
@@ -87,9 +87,9 @@ public class RainbowdashPlayer
 			x = x + shipSpeed / fps;
 		}
 		// actu rect 
-		rect.top = y - 55;
-		rect.bottom = y + height/2;
-		rect.left = x + 20;
-		rect.right = x + length -20;
+		rect.top = y;
+		rect.bottom = y + height;
+		rect.left = x;
+		rect.right = x + length;
 	}
 }
