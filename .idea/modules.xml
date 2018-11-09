@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/FinalDash.iml" filepath="$PROJECT_DIR$/FinalDash.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/FinalDash-master.iml" filepath="$PROJECT_DIR$/FinalDash-master.iml" />
+>>>>>>> Arreglos de codigo y optimizacion
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
